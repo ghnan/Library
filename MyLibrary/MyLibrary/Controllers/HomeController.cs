@@ -10,7 +10,7 @@ namespace MyLibrary.Controllers
     {
         public ActionResult Index()
         {
-            return null;
+            return Content("ttt");
         }
     }
 }
