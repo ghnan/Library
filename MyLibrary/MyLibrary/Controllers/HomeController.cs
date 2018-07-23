@@ -8,6 +8,9 @@ namespace MyLibrary.Controllers
 {
     public class HomeController : Controller
     {
-      
+        public Action Index()
+        {
+            return null;
+        }
     }
 }
