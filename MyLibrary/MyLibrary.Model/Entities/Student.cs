@@ -12,6 +12,7 @@ namespace MyLibrary.Model.Entities
     public class Student
     {
         public int StudentID { get; set; }
+        public string StudentUserName { get; set; }
         public string StudentPwd { get; set; }
         public string Name { get; set; }
         public int Phone { get; set; }

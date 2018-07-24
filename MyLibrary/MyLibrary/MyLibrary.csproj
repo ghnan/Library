@@ -154,6 +154,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Areas\Student\Views\Web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -178,12 +179,20 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Areas\Student\Views\Account\Login.cshtml">
+      <BrowseToURL>~/Student/Account/Login</BrowseToURL>
+    </Content>
+    <Content Include="Areas\Student\Views\Account\Register.cshtml">
+      <BrowseToURL>~/Student/Account/Register</BrowseToURL>
+    </Content>
+    <Content Include="Areas\Student\Views\Account\StudentMain.cshtml" />
+    <Content Include="Areas\Student\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Student\Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -199,17 +208,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MyLibrary.Model\MyLibrary.Model.csproj">
-      <Project>{4ca7c4be-0592-4aeb-b551-42aaec5c5512}</Project>
-      <Name>MyLibrary.Model</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MyLibrary.Student.Mvc\MyLibrary.Student.Mvc.csproj">
       <Project>{07d56b15-7ad9-4681-b136-e0f8e8e49ba8}</Project>
       <Name>MyLibrary.Student.Mvc</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MyLibrary.Student\MyLibrary.Student.csproj">
-      <Project>{4a93e773-e970-4ac7-b8d9-a95508a893fb}</Project>
-      <Name>MyLibrary.Student</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

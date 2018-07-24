@@ -14,9 +14,8 @@ namespace MyLibrary.Student.Mvc
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(name: "StudentArea",
-                url: "{area}/{controller}/{action}/{id}",
-                  defaults: new { area = "Student", controller = " Account", action = "Test", id = UrlParameter.Optional });
-
+                url: "Student/{controller}/{action}/{id}",
+                  defaults: new { area = "Student", controller = " Account", action = "Register", id = UrlParameter.Optional });
         }
 
     }

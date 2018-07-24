@@ -8,8 +8,7 @@ namespace MyLibrary.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Login()
-        {
+        public ActionResult StudentMain() {
             return View();
         }
     }

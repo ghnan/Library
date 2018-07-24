@@ -12,6 +12,7 @@ namespace MyLibrary.Model.Entities
      public class Admin
     {
         public int AdminID { get; set; }
+        public string AdminUserName { get; set; }
         public string AdminPwd { get; set; }
         public string Name { get; set; }
         public int Phone { get; set; }
