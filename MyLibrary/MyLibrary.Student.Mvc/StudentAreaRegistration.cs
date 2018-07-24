@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
-namespace MyLibrary.Student
+namespace MyLibrary.Student.Mvc
 {
     public class StudentAreaRegistration : System.Web.Mvc.AreaRegistration
     {

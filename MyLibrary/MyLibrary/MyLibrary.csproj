@@ -203,6 +203,10 @@
       <Project>{4ca7c4be-0592-4aeb-b551-42aaec5c5512}</Project>
       <Name>MyLibrary.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MyLibrary.Student.Mvc\MyLibrary.Student.Mvc.csproj">
+      <Project>{07d56b15-7ad9-4681-b136-e0f8e8e49ba8}</Project>
+      <Name>MyLibrary.Student.Mvc</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MyLibrary.Student\MyLibrary.Student.csproj">
       <Project>{4a93e773-e970-4ac7-b8d9-a95508a893fb}</Project>
       <Name>MyLibrary.Student</Name>
