@@ -8,9 +8,9 @@ namespace MyLibrary.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Login()
         {
-            return Content("ttt");
+            return View();
         }
     }
 }

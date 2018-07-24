@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+    <h1>图书管理系统</h1>
+</div>
+<h3>请完成登录或者注册操作：</h3>
+<div>
+    <form class="form-horizontal" role="form" action="~/Home/Register">
+        <div class="form-group">
+            <label for="uid" class="col-sm-2 control-label">用户名：</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="uid" placeholder="请输出用户名" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="pwd" class="col-lg-2 control-label">密码：</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="pwd" placeholder="请输入密码" />
+            </div>
+        </div>
+        <a href="" class="btn btn-default">学生登录</a>
+        <a href="" class="btn btn-default">管理员登录</a>
+        <button type="submit" class="btn btn-default">学生注册</button>
+</div>
