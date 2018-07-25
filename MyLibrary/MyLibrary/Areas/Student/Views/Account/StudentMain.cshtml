@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<MyLibrary.Model.Entities.Book>
 @{
     ViewBag.Title = "StudentMain";
 }
@@ -6,10 +6,47 @@
 <div class="jumbotron text-center" style="margin-bottom:0">
     <h1>这是学生借阅图书页面：</h1>
 </div>
-<p>学生导航菜单</p>
-<ul class="nav nav-pills">
-    <li class="active"><a href="#">个人信息</a></li>
-    <li class="active"><a href="#">书籍查询</a></li>
-    <li class="active"><a href="#">书籍借阅</a></li>
-    <li class="active"><a href="#">书籍归还</a></li>
-</ul>
+<a href="/Book/Book/DoAddBook">
+    <button type="button" class="btn btn-default">添加书籍</button>
+</a>
+
+<table class="table-hover" style="margin-top:50px;">
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            书名
+        </th>
+        <th>
+            作者
+        </th>
+        <th>
+            价格
+        </th>
+        <th>
+            在馆数量
+        </th>
+    </tr>
+ @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+        </tr>
+    }
+</table>
+

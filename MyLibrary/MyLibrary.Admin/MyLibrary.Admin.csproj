@@ -69,8 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AdminDBContext.cs" />
-    <Compile Include="Properties\AdminLogin.cs" />
+    <Compile Include="DBContext\AdminDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
