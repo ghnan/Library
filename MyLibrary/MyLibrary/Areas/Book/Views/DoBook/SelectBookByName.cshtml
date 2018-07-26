@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MyLibrary.Model.Entities.Book>
+@{
+    ViewBag.Title = "SelectBookByName";
+}
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+    <h1>通过书名查找书籍：</h1>
+</div>
+
+<table class="table table-bordered" style="margin-top:50px;">
+    <tr class="active">
+        <th>
+            #
+        </th>
+        <th>
+            书名
+        </th>
+        <th>
+            作者
+        </th>
+        <th>
+            价格
+        </th>
+        <th>
+            在馆数量
+        </th>
+        <th>
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                <a href="" name="@item.Name">详情</a>
+            </td>
+        </tr>
+    }
+</table>

@@ -15,7 +15,7 @@ namespace MyLibrary.Book.Mvc
         {
             context.MapRoute(name: "BookArea",
                 url: "Book/{controller}/{action}/{id}",
-                  defaults: new { area = "Book", controller = "Book", action = "AddBook", id = UrlParameter.Optional });
+                  defaults: new { area = "Book", controller = "DoBook", action = "AddBook", id = UrlParameter.Optional });
         }
 
     }

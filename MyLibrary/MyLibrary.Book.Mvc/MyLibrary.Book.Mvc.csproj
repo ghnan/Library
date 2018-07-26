@@ -70,7 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BookAreaRegistration.cs" />
-    <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\DoBookController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

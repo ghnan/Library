@@ -154,10 +154,16 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Areas\Student\Views\Web.config" />
-    <Content Include="Areas\Book\Views\Book\AddBook.cshtml" />
+    <Content Include="Areas\Borrowing\Views\Web.config" />
+    <Content Include="Areas\Book\Views\DoBook\AddBook.cshtml" />
     <Content Include="Areas\Book\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Book\Views\Web.config" />
+    <Content Include="Areas\Book\Views\DoBook\SelectBook.cshtml" />
+    <Content Include="Areas\Book\Views\DoBook\SelectBookByName.cshtml" />
+    <Content Include="Areas\Book\Views\DoBook\Borrowing.cshtml" />
+    <Content Include="Areas\Student\Views\Web.config" />
+    <Content Include="Areas\Borrowing\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Borrowing\Views\DoBorrowing\Test.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -214,6 +220,18 @@
     <ProjectReference Include="..\MyLibrary.Book.Mvc\MyLibrary.Book.Mvc.csproj">
       <Project>{eedadc3f-16e3-4caf-8cb9-2168abe85ce1}</Project>
       <Name>MyLibrary.Book.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyLibrary.Book\MyLibrary.Book.csproj">
+      <Project>{ac66c253-3e5c-4212-adf8-cbe2fd76e578}</Project>
+      <Name>MyLibrary.Book</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyLibrary.Borrowing.Mvc\MyLibrary.Borrowing.Mvc.csproj">
+      <Project>{e56f2609-1051-4e74-94ce-dcc292f17782}</Project>
+      <Name>MyLibrary.Borrowing.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyLibrary.Borrowing\MyLibrary.Borrowing.csproj">
+      <Project>{c24521c7-1375-41ae-ab45-5a45dacb93b5}</Project>
+      <Name>MyLibrary.Borrowing</Name>
     </ProjectReference>
     <ProjectReference Include="..\MyLibrary.Model\MyLibrary.Model.csproj">
       <Project>{4ca7c4be-0592-4aeb-b551-42aaec5c5512}</Project>

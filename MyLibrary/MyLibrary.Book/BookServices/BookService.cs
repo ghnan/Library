@@ -5,26 +5,35 @@ using System.Linq;
 
 namespace MyLibrary.Book.BookServices
 {
-    public static  class BookServices
+    public static  class BookService
     {
+        /// <summary>
+        /// 定义图书数据库上下文
+        /// </summary>
         static BookDbContext Bdb = new BookDbContext();
-        public static void AddBook(int BookID, string BookName, int BookPrice, string BookAuthor, int BookQuantity)
-        {
 
-            Model.Entities.Book book = new Model.Entities.Book();
-            book.BookID = BookID;
-            book.Name = BookName;
-            book.Price = BookPrice;
-            book.Author = BookAuthor;
-            book.Quantity = BookQuantity;
+        /// <summary>
+        /// 添加书籍
+        /// </summary>
+        /// <param name="book"></param>
+        public static void AddBook(Model.Entities.Book book)
+        {
             Bdb.Books.Add(book);
             Bdb.SaveChanges();
         }
-       
-        public static List<Model.Entities.Book> GetBooksByAuthor(string author)
+
+        public static List<Model.Entities.Book> GetBooks()
         {
-            List<Model.Entities.Book> bookList = Bdb.Books.Where(c => c.Author == author).ToList();
-             
+            return Bdb.Books.ToList();
+        }
+        /// <summary>
+        /// 未知
+        /// </summary>
+        /// <param name="author"></param>
+        /// <returns></returns>
+        public static List<Model.Entities.Book> SelectBooksByName(string Name)
+        {
+            List<Model.Entities.Book> bookList = Bdb.Books.Where(book => book.Name == Name).ToList();
             return bookList;
         }
     }

@@ -1,17 +1,42 @@
-﻿@model IEnumerable<MyLibrary.Model.Entities.Book>
+﻿@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $("#AddBook").click(function () {
+                window.location.href = "/Book/DoBook/AddBook";
+            });
+        });
+
+        $(function () {
+            $("#SelectBook").click(function () {
+                window.location.href = "/Book/DoBook/SelectBook";
+            });
+        });
+
+        $(function () {
+            $("#Borrowing").click(function () {
+                window.location.href = "/Book/DoBook/Borrowing";
+            });
+        });
+    </script>
+}
+
+@model IEnumerable<MyLibrary.Model.Entities.Book>
 @{
     ViewBag.Title = "StudentMain";
 }
 
 <div class="jumbotron text-center" style="margin-bottom:0">
-    <h1>这是学生借阅图书页面：</h1>
+    <h1>这是学生图书馆管理页面：</h1>
 </div>
-<a href="/Book/Book/DoAddBook">
-    <button type="button" class="btn btn-default">添加书籍</button>
-</a>
+<button id="AddBook" class="btn btn-default">添加书籍</button>
 
-<table class="table-hover" style="margin-top:50px;">
-    <tr>
+<button id="SelectBook" class="btn btn-default">查询书籍</button>
+
+<button id="Borrowing" class="btn btn-default">借阅书籍</button>
+
+<table class="table table-bordered" style="margin-top:50px;">
+    <tr class="active">
         <th>
             #
         </th>
@@ -27,8 +52,10 @@
         <th>
             在馆数量
         </th>
+        <th>
+        </th>
     </tr>
- @foreach (var item in Model)
+    @foreach (var item in Model)
     {
         <tr>
             <td>
@@ -45,6 +72,18 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @{
+                    if (item.Quantity > 0)
+                    {
+                    <a href="~/Book/DoBook/Borrowing" >可以借阅</a>
+                    }
+                    else
+                    {
+                    <a class="disabled">存量不足</a>
+                        }
+                    }
             </td>
         </tr>
     }

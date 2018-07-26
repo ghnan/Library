@@ -1,6 +1,5 @@
-﻿using System.Web.Mvc;
-using System.Linq;
-using MyLibrary.Student.DbContext;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 namespace MyLibrary.Student.Mvc.Controllers
 {
     /// <summary>
@@ -8,10 +7,6 @@ namespace MyLibrary.Student.Mvc.Controllers
     /// </summary>
     public class AccountController : Controller
     {
-        /// <summary>
-        /// 定义上下文Sdb
-        /// </summary>
-        private StudentDbContext Sdb = new StudentDbContext();
         /// <summary>
         /// 登录显示界面
         /// </summary>
@@ -29,28 +24,19 @@ namespace MyLibrary.Student.Mvc.Controllers
         public ActionResult DoLogin(Model.Entities.Student student)
         {
             string flag = Request.Form["optionsRadiosinline"];
-            string username = Request.Form["username"];
-            string pwd = Request.Form["pwd"];
-            if (flag == "option1")
+            int judge = StudentServices.StudentService.DoLogin(flag,student);
+            switch (judge)
             {
-                if (username == "")
-                {
-                    return Content("请输入用户名");
-                }
-                else
-                {
-                    if (Sdb.Students.Any(s => s.StudentUserName == username))
-                    {
-                        if (Sdb.Students.Single(s => s.StudentUserName == username).StudentPwd == pwd)
-                        {
-                            return RedirectToAction("StudentMain");
-                        }
-                        else return Content("密码错误");
-                    }
-                    else return Content("用户不存在");
-                }
+                case 1:return Content("用户名为空") ;
+ 
+                case 2:return RedirectToAction("StudentMain");
+                    
+                case 3:return Content("密码错误");
+                   
+                case 4:return Content("用户不存在");
+
+                default:return Content("系统错误");
             }
-            else return null;  
         }
         /// <summary>
         /// 注册页面显示
@@ -69,17 +55,10 @@ namespace MyLibrary.Student.Mvc.Controllers
         {
             if (ModelState.IsValid)
             {
-                string uname = Request.Form["uname"];
-                string pwd = Request.Form["pwd"];
-                string name = Request.Form["name"];
-                student.StudentUserName = uname;
-                student.StudentPwd = pwd;
-                student.Name = name;
-                Sdb.Students.Add(student);
-                Sdb.SaveChanges();
+                StudentServices.StudentService.DoRegister(student);
                 return RedirectToAction("Login");
             }
-            return View(student);
+            return Content("输入不合法");
         }
         /// <summary>
         /// 学生页面显示
@@ -87,7 +66,9 @@ namespace MyLibrary.Student.Mvc.Controllers
         /// <returns></returns>
         public ActionResult StudentMain()
         {
-            return View();
+            List<Model.Entities.Book> booklist = MyLibrary.Book.BookServices.BookService.GetBooks();
+            return View(booklist);
         }
+
     }
 }

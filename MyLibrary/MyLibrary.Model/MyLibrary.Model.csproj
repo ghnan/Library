@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Entities\Admin.cs" />
     <Compile Include="Entities\Book.cs" />
+    <Compile Include="Entities\Borrowing.cs" />
     <Compile Include="Entities\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
