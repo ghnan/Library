@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Return";
+}
+
+<div class="jumbotron text-center" style="margin-bottom:auto">
+    <h1>这是学生归还书籍页面：</h1>
+</div>
+
+<form class="form-horizontal" role="form" action="/Borrowing/DoBorrowing/DoReturnByName" method="post">
+    <div class="form-group">
+        <label for="BookName" class="col-sm-2 control-label">归还书名：</label>
+        <div class="col-sm-10">
+            <input type="text" name="BookName" class="form-control" id="BookName" placeholder="请输入书名" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="StudentName" class="col-sm-2 control-label">学生姓名：</label>
+        <div class="col-sm-10">
+            <input type="text" name="StudentName" class="form-control" id="StudentName" placeholder="请输入学生姓名" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">确认</button>
+        </div>
+    </div>
+</form>

@@ -24,7 +24,7 @@ namespace MyLibrary.Student.Mvc.Controllers
         public ActionResult DoLogin(Model.Entities.Student student)
         {
             string flag = Request.Form["optionsRadiosinline"];
-            int judge = StudentServices.StudentService.DoLogin(flag,student);
+            int judge = Services.StudentService.DoLogin(flag,student);
             switch (judge)
             {
                 case 1:return Content("用户名为空") ;
@@ -55,8 +55,8 @@ namespace MyLibrary.Student.Mvc.Controllers
         {
             if (ModelState.IsValid)
             {
-                StudentServices.StudentService.DoRegister(student);
-                return RedirectToAction("Login");
+                Services.StudentService.DoRegister(student);
+                return RedirectToAction("Login","Home",new { Area=""});
             }
             return Content("输入不合法");
         }
@@ -66,7 +66,7 @@ namespace MyLibrary.Student.Mvc.Controllers
         /// <returns></returns>
         public ActionResult StudentMain()
         {
-            List<Model.Entities.Book> booklist = MyLibrary.Book.BookServices.BookService.GetBooks();
+            List<Model.Entities.Book> booklist = Book.Services.BookService.GetBooks();
             return View(booklist);
         }
 

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MyLibrary.Model.Entities.Borrowing>
+@{
+    ViewBag.Title = "ShowBorrowingInfo";
+}
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+    <h1>这是借阅信息展示页面：</h1>
+</div>
+
+<table class="table table-bordered" style="margin-top:50px;">
+    <tr class="active">
+        <th>
+            #
+        </th>
+        <th>
+            学生姓名
+        </th>
+        <th>
+            书名
+        </th>
+        <th>
+            借阅日期
+        </th>
+        <th>
+            归还日期
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BorrowingID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date_Return)
+            </td>
+        </tr>
+    }
+</table>

@@ -27,8 +27,16 @@ namespace MyLibrary.Book.Mvc.Controllers
         [HttpPost]
         public ActionResult DoAddBook(Model.Entities.Book book)
         {
-            BookServices.BookService.AddBook(book);
-            return RedirectToAction("StudentMain", "Account", new { area = "Student" });
+            if (!ModelState.IsValid)
+            {
+                return Content("数据校验不通过");
+            }
+            else
+            {
+                Services.BookService.AddBook(book);
+                return RedirectToAction("StudentMain", "Account", new { area = "Student" });
+            }
+
         }
 
         /// <summary>
@@ -46,30 +54,8 @@ namespace MyLibrary.Book.Mvc.Controllers
         /// <returns></returns>
         public ActionResult SelectBookByName(string Name)
         {
-            List<Model.Entities.Book> booklist = BookServices.BookService.SelectBooksByName(Name);
+            List<Model.Entities.Book> booklist = Services.BookService.SelectBooksByName(Name);
             return View(booklist);
         }
-
-        /// <summary>
-        /// 借书页面
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult Borrowing()
-        {
-            return View();
-        }
-
-        /// <summary>
-        /// 通过书名借阅书籍
-        /// </summary>
-        /// <returns></returns>
-        [HttpPost]
-        public ActionResult DoBorrowingByName()
-        {
-            string BookName = Request.Form["Name"];
-
-            return null;
-        }
-        
     }
 }

@@ -47,13 +47,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BorrowingServices\BorrowingService.cs" />
+    <Compile Include="Services\BorrowingService.cs" />
     <Compile Include="DbContext\BorrowingDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyLibrary.Book\MyLibrary.Book.csproj">
+      <Project>{ac66c253-3e5c-4212-adf8-cbe2fd76e578}</Project>
+      <Name>MyLibrary.Book</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyLibrary.Model\MyLibrary.Model.csproj">
+      <Project>{4ca7c4be-0592-4aeb-b551-42aaec5c5512}</Project>
+      <Name>MyLibrary.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -11,10 +11,24 @@ namespace MyLibrary.Model.Entities
         [Key]
         public int BorrowingID { get; set; }
 
+        /// <summary>
+        /// 借阅学生名字
+        /// </summary>
         public string StudentName { get; set; }
 
+        /// <summary>
+        /// 借阅书籍名字
+        /// </summary>
         public string BookName { get; set; }
 
-        public DateTime date { get; set; } 
+        /// <summary>
+        /// 借阅书籍时间
+        /// </summary>
+        public DateTime? Date { get; set; } 
+
+        /// <summary>
+        /// 归还书籍时间
+        /// </summary>
+        public DateTime? Date_Return { get; set; }
     }
 }

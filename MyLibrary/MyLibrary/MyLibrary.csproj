@@ -160,10 +160,12 @@
     <Content Include="Areas\Book\Views\Web.config" />
     <Content Include="Areas\Book\Views\DoBook\SelectBook.cshtml" />
     <Content Include="Areas\Book\Views\DoBook\SelectBookByName.cshtml" />
-    <Content Include="Areas\Book\Views\DoBook\Borrowing.cshtml" />
+    <Content Include="Areas\Borrowing\Views\DoBorrowing\Borrowing.cshtml" />
     <Content Include="Areas\Student\Views\Web.config" />
     <Content Include="Areas\Borrowing\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Borrowing\Views\DoBorrowing\Test.cshtml" />
+    <Content Include="Areas\Borrowing\Views\DoBorrowing\Return.cshtml" />
+    <Content Include="Areas\Borrowing\Views\DoBorrowing\ShowBorrowingInfo.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -188,7 +190,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Student\Views\Account\Login.cshtml">
+    <Content Include="Views\Home\Login.cshtml">
       <BrowseToURL>~/Student/Account/Login</BrowseToURL>
     </Content>
     <Content Include="Areas\Student\Views\Account\Register.cshtml">
@@ -201,7 +203,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -268,6 +269,8 @@
           <DevelopmentServerPort>54108</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:54108/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:54108/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

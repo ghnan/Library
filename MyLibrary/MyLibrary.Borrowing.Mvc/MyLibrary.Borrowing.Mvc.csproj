@@ -77,5 +77,15 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyLibrary.Borrowing\MyLibrary.Borrowing.csproj">
+      <Project>{c24521c7-1375-41ae-ab45-5a45dacb93b5}</Project>
+      <Name>MyLibrary.Borrowing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyLibrary.Model\MyLibrary.Model.csproj">
+      <Project>{4ca7c4be-0592-4aeb-b551-42aaec5c5512}</Project>
+      <Name>MyLibrary.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

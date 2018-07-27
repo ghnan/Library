@@ -20,6 +20,7 @@ namespace MyLibrary.Model.Entities
         /// 书名
         /// </summary>
         [DisplayName("书名")]
+        //[Required(AllowEmptyStrings = true,ErrorMessage ="尚有未填项，请完善")]
         public string Name { get; set; }
 
 

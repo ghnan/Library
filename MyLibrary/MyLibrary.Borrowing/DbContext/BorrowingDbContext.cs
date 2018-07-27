@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 
 namespace MyLibrary.Borrowing.DbContext
 {
-    class BorrowingDbContext
+    class BorrowingDbContext : System.Data.Entity.DbContext
     {
+        public BorrowingDbContext() : base("LibraryDataConn")
+        {
+
+        }
+        public DbSet<MyLibrary.Model.Entities.Borrowing> borrowings { get; set; }
     }
 }

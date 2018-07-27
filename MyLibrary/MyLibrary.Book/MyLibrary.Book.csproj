@@ -68,7 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BookServices\BookService.cs" />
+    <Compile Include="Services\BookService.cs" />
     <Compile Include="DbContext\BookDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

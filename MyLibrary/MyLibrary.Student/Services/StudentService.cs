@@ -1,8 +1,7 @@
 ﻿using MyLibrary.Student.DbContext;
-using System;
 using System.Linq;
 
-namespace MyLibrary.Student.StudentServices
+namespace MyLibrary.Student.Services
 {
     public static class StudentService
     {
@@ -18,6 +17,8 @@ namespace MyLibrary.Student.StudentServices
         /// <returns></returns>
         public static int DoLogin(string flag,Model.Entities.Student student)
         {
+            string Name = student.Name;
+            
             if (flag == "option1")
             {
                 if (student.StudentUserName == "")

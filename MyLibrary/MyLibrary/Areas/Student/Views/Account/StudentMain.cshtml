@@ -15,7 +15,19 @@
 
         $(function () {
             $("#Borrowing").click(function () {
-                window.location.href = "/Book/DoBook/Borrowing";
+                window.location.href = "/Borrowing/DoBorrowing/Borrowing";
+            });
+        });
+
+        $(function () {
+            $("#Return").click(function () {
+                window.location.href = "/Borrowing/DoBorrowing/Return";
+            });
+        });
+
+        $(function () {
+            $("#ShowBorrowingInfo").click(function () {
+                window.location.href = "/Borrowing/DoBorrowing/ShowBorrowingInfo";
             });
         });
     </script>
@@ -34,6 +46,10 @@
 <button id="SelectBook" class="btn btn-default">查询书籍</button>
 
 <button id="Borrowing" class="btn btn-default">借阅书籍</button>
+
+<button id="Return" class="btn btn-default">归还书籍</button>
+
+<button id="ShowBorrowingInfo" class="btn btn-default">显示借阅信息</button>
 
 <table class="table table-bordered" style="margin-top:50px;">
     <tr class="active">
@@ -77,7 +93,7 @@
                 @{
                     if (item.Quantity > 0)
                     {
-                    <a href="~/Book/DoBook/Borrowing" >可以借阅</a>
+                    <a href="/Borrowing/DoBorrowing/Borrowing" >可以借阅</a>
                     }
                     else
                     {
