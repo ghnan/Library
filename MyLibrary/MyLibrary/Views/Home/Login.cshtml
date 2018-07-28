@@ -1,9 +1,20 @@
-﻿<div class="jumbotron text-center" style="margin-bottom:0">
+﻿@section scripts
+{
+<script type="text/javascript">
+    $(function () {
+        $("#Register").click(function () {
+            window.location.href = "/Student/DoStudent/Register";
+        });
+    });
+</script>
+}
+
+<div class="jumbotron text-center" style="margin-bottom:50">
     <h1>图书管理系统</h1>
 </div>
 <h3>请完成登录或者注册操作：</h3>
 <div>
-    <form class="form-horizontal" role="form" action="~/Student/Account/DoLogin" method="post">
+    <form class="form-horizontal" role="form" method="post" action="/Student/DoStudent/DoLogin">
         <div class="form-group">
             <label for="uid" class="col-sm-2 control-label">用户名：</label>
             <div class="col-lg-10">
@@ -26,8 +37,16 @@
         </div>
         <button type="submit" class="btn btn-default">登录</button>
         &nbsp&nbsp
-        <a href="/Student/Account/Register">
-            <button type="button" class="btn btn-default">注册</button>
-        </a>
+            <button type="button" id="Register" class="btn btn-default">注册</button>
     </form>
 </div>
+
+<!--
+<form action="/Admin/DoAdmin/Register" method="post">
+    <input type="text" name="AdminUserName" id="username" placeholder="请输入用户名" />
+    <input type="text" name="AdminPwd" id="pwd" placeholder="请输入密码" />
+    <input type="text" name="Name" id="name" placeholder="请输入姓名" />
+    <input type="text" name="Phone" id="phone" placeholder="请输入电话" />
+    <button type="submit" >提交</button>
+</form>
+-->

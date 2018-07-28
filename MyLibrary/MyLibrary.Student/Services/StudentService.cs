@@ -1,4 +1,5 @@
 ﻿using MyLibrary.Student.DbContext;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MyLibrary.Student.Services
@@ -49,6 +50,14 @@ namespace MyLibrary.Student.Services
         {
             Sdb.Students.Add(student);
             Sdb.SaveChanges();
+        }
+
+        /// <summary>
+        /// 获得学生信息
+        /// </summary>
+        public static List<Model.Entities.Student> GetSudentInfo()
+        {
+            return Sdb.Students.ToList();
         }
     }
 }

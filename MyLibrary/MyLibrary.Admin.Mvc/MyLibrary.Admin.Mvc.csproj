@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{07D56B15-7AD9-4681-B136-E0F8E8E49BA8}</ProjectGuid>
+    <ProjectGuid>{D26F766A-1A46-457B-A68B-553E3B3C7F01}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MyLibrary.Student.Mvc</RootNamespace>
-    <AssemblyName>MyLibrary.Student.Mvc</AssemblyName>
+    <RootNamespace>MyLibrary.Admin.Mvc</RootNamespace>
+    <AssemblyName>MyLibrary.Admin.Mvc</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,18 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.Scaffolding.EntityFramework.12.0, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -70,18 +62,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\DoStudentController.cs" />
-    <Compile Include="StudentAreaRegistration.cs" />
+    <Compile Include="AdminAreaRegistration.cs" />
+    <Compile Include="Controllers\DoAdminController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MyLibrary.Book\MyLibrary.Book.csproj">
-      <Project>{ac66c253-3e5c-4212-adf8-cbe2fd76e578}</Project>
-      <Name>MyLibrary.Book</Name>
+    <ProjectReference Include="..\MyLibrary.Admin\MyLibrary.Admin.csproj">
+      <Project>{a807c4ef-f4d9-45e2-b7a0-60eba99cc3d9}</Project>
+      <Name>MyLibrary.Admin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyLibrary.Borrowing\MyLibrary.Borrowing.csproj">
+      <Project>{c24521c7-1375-41ae-ab45-5a45dacb93b5}</Project>
+      <Name>MyLibrary.Borrowing</Name>
     </ProjectReference>
     <ProjectReference Include="..\MyLibrary.Model\MyLibrary.Model.csproj">
       <Project>{4ca7c4be-0592-4aeb-b551-42aaec5c5512}</Project>
@@ -91,6 +83,9 @@
       <Project>{4a93e773-e970-4ac7-b8d9-a95508a893fb}</Project>
       <Name>MyLibrary.Student</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

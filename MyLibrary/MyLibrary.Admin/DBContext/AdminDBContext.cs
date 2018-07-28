@@ -1,10 +1,10 @@
 ﻿using System.Data.Entity;
 
-namespace MyLibrary.Admin.Properties
+namespace MyLibrary.Admin.DbContext
 {
-    class AdminDBContext : System.Data.Entity.DbContext
+    class AdminDbContext : System.Data.Entity.DbContext
     {
-        public AdminDBContext() : base("LibraryDataConn")
+        public AdminDbContext() : base("LibraryDataConn")
         {
         }
         public DbSet<MyLibrary.Model.Entities.Admin> Admins { get; set; }

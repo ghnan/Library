@@ -5,7 +5,7 @@ namespace MyLibrary.Student.Mvc.Controllers
     /// <summary>
     /// 学生账户管理控制器
     /// </summary>
-    public class AccountController : Controller
+    public class DoStudentController : Controller
     {
         /// <summary>
         /// 登录显示界面
@@ -15,6 +15,12 @@ namespace MyLibrary.Student.Mvc.Controllers
         {
             return View();
         }
+
+        public ActionResult ReturnLogin()
+        {
+            return RedirectToAction("Login","Home",new {Area = "" });
+        }
+
         /// <summary>
         /// 登录操作页面，即判断登录类型，检测用户名、密码是否合格
         /// </summary>
@@ -27,14 +33,16 @@ namespace MyLibrary.Student.Mvc.Controllers
             int judge = Services.StudentService.DoLogin(flag,student);
             switch (judge)
             {
-                case 1:return Content("用户名为空") ;
+                case 0:return RedirectToAction("AdminMain", "DoAdmin",new { Area = "Admin" });
+
+                case 1:return Content("用户名为空");
  
                 case 2:return RedirectToAction("StudentMain");
                     
                 case 3:return Content("密码错误");
                    
                 case 4:return Content("用户不存在");
-
+                
                 default:return Content("系统错误");
             }
         }
@@ -69,6 +77,5 @@ namespace MyLibrary.Student.Mvc.Controllers
             List<Model.Entities.Book> booklist = Book.Services.BookService.GetBooks();
             return View(booklist);
         }
-
     }
 }

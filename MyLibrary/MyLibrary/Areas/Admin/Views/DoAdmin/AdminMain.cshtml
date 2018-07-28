@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MyLibrary.Model.Entities.Student>
+@{
+    ViewBag.Title = "AdminMain";
+}
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+    <h1>这是管理员图书管理页面：</h1>
+</div>
+
+<ul class="nav nav-pills">
+    <li>
+        <a href="/Admin/DoAdmin/BorrowingInfo">书籍借阅信息</a>
+    </li>
+    <li>
+        <a href="/Book/DoBook/AddBook">添加书籍</a>
+    </li>
+</ul>
+
+<table class="table table-bordered" style="margin-top:50px;">
+    <tr class="active">
+        <th>
+            #
+        </th>
+        <th>
+            用户名
+        </th>
+        <th>
+            密码
+        </th>
+        <th>
+            姓名
+        </th>
+        <th>
+            电话
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentUserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentPwd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                <a href="/Book/DoBook/DeleteBook">删除书籍</a>
+            </td>
+            <td>
+                <a href="/Book/DoBook/ChangeBook">修改信息</a>
+            </td>
+        </tr>
+    }
+</table>
+<a href="~/Home/Login">返回登录界面</a>

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<MyLibrary.Model.Entities.Book>
+@{
+    ViewBag.Title = "StudentMain";
+}
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+    <h1>这是学生图书馆管理页面</h1>
+</div>
+
+<ul class="nav nav-pills">
+    <li>
+        <a href="/Book/DoBook/SelectBook">查询书籍</a>
+    </li>
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown">
+            借阅书籍 <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="/Borrowing/DoBorrowing/Borrowing">通过书籍名称借阅</a>
+            </li>
+            <li>
+                <a>通过书籍编号借阅</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="/Borrowing/DoBorrowing/Return">归还书籍</a>
+    </li>
+</ul>
+<table class="table table-bordered" style="margin-top:50px;">
+    <tr class="active">
+        <th>
+            #
+        </th>
+        <th>
+            书名
+        </th>
+        <th>
+            作者
+        </th>
+        <th>
+            价格
+        </th>
+        <th>
+            在馆数量
+        </th>
+        <th>
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @{
+                    if (item.Quantity > 0)
+                    {
+                        <a href="/Borrowing/DoBorrowing/Borrowing">可以借阅</a>
+                    }
+                    else
+                    {
+                        <a class="disabled">存量不足</a>
+                    }
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+<a href="ReturnLogin">返回登录页面</a>

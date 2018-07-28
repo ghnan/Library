@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace MyLibrary.Borrowing.Mvc.Controllers
@@ -30,9 +26,9 @@ namespace MyLibrary.Borrowing.Mvc.Controllers
             bool flag = Services.BorrowingService.DoBorrowingByName(BookName, StudentName);
             if (flag)
             {
-                return RedirectToAction("StudentMain", "Account", new { area = "Student" });
+                return RedirectToAction("StudentMain", "DoStudent", new { area = "Student" });
             }
-            else return Content("书名输入错误");
+            else return Content("借阅失败，可能是书籍未归还或者书籍名称输入错误");
         }
 
         /// <summary>
@@ -44,6 +40,10 @@ namespace MyLibrary.Borrowing.Mvc.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 通过书名归还书籍
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult DoReturnByName()
         {
@@ -52,14 +52,18 @@ namespace MyLibrary.Borrowing.Mvc.Controllers
             bool flag = Services.BorrowingService.DoReturnByName(BookName,StudentName);
             if (flag)
             {
-                return RedirectToAction("StudentMain", "Account", new { area = "Student" });
+                return RedirectToAction("StudentMain", "DoStudent", new { area = "Student" });
             }
             else
             {
-                return Content("输入信息有误");
+                return Content("归还失败，可能是书籍未借阅或者书籍名称输入错误");
             }
         }
 
+        /// <summary>
+        /// 显示借阅信息
+        /// </summary>
+        /// <returns></returns>
         public ActionResult ShowBorrowingInfo()
         {
             List<MyLibrary.Model.Entities.Borrowing> borrowings = new List<Model.Entities.Borrowing>();

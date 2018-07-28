@@ -30,5 +30,10 @@ namespace MyLibrary.Model.Entities
         /// 归还书籍时间
         /// </summary>
         public DateTime? Date_Return { get; set; }
+
+        /// <summary>
+        /// 借阅状态,State=0时代表没有借书,State=1时代表借书没还，State=2时代表借书还书了
+        /// </summary>
+        public int? State { get; set; }
     }
 }

@@ -94,15 +94,41 @@ namespace MyLibrary.Book.Services
         {
             bool flag = false;
             List<Model.Entities.Book> bookqueries = Bdb.Books.Where(s => s.Name == BookName).ToList();
+            Model.Entities.Book bookquery = bookqueries.FirstOrDefault();
             if (bookqueries.Count == 0)
             {
                 flag = false;
             }
             else
             {
-                flag = true;
+                if (bookquery.Quantity > 0)
+                {
+                    flag = true;
+                }
+                else
+                {
+                    flag = false;
+                }
             }
             return flag;
+        }
+
+        /// <summary>
+        /// 通过书籍名称删除书籍
+        /// </summary>
+        /// <param name="BookName"></param>
+        public static void DeleteBookByName(string BookName)
+        {
+            List<Model.Entities.Book> bookqueries = Bdb.Books.Where(s => s.Name == BookName).ToList();
+            Model.Entities.Book bookquery = bookqueries.FirstOrDefault();
+            if (bookquery == null)
+            {
+            }
+            else
+            {
+                Bdb.Books.Remove(bookquery);
+                Bdb.SaveChanges();
+            }
         }
     }
 }

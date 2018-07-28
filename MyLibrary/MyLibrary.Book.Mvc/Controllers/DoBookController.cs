@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using MyLibrary.Model.Entities;
 
 namespace MyLibrary.Book.Mvc.Controllers
 {
@@ -34,7 +32,7 @@ namespace MyLibrary.Book.Mvc.Controllers
             else
             {
                 Services.BookService.AddBook(book);
-                return RedirectToAction("StudentMain", "Account", new { area = "Student" });
+                return RedirectToAction("AdminMain", "DoAdmin", new { area = "Admin" });
             }
 
         }
@@ -56,6 +54,35 @@ namespace MyLibrary.Book.Mvc.Controllers
         {
             List<Model.Entities.Book> booklist = Services.BookService.SelectBooksByName(Name);
             return View(booklist);
+        }
+
+        /// <summary>
+        /// 显示学生主页面
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ReturnStudentMain()
+        {
+            return RedirectToAction("StudentMain", "DoStudent", new { Area = "Student" });
+        }
+
+        /// <summary>
+        /// 删除书籍页面
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult DeleteBook()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 进行删除书籍操作
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult DeleteBookByName()
+        {
+            string BookName = Request.Form["BookName"];
+            Services.BookService.DeleteBookByName(BookName);
+            return RedirectToAction("Admin", "DoAdmin", new { Area = "Admin" });
         }
     }
 }

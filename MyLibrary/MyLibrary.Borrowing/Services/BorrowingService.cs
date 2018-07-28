@@ -19,6 +19,8 @@ namespace MyLibrary.Borrowing.Services
             Model.Entities.Book book = new Model.Entities.Book();
             book.Name = BookName;
             bool flag = Book.Services.BookService.JudgeBook(BookName);
+            List<Model.Entities.Borrowing> borrowingqueries = Bodb.borrowings.Where(s => s.StudentName == StudentName).ToList();
+            Model.Entities.Borrowing borrowingquery = borrowingqueries.FirstOrDefault();
             if (flag)
             {
                 Book.Services.BookService.BorrowingUpdateBookQuantity(book);
@@ -28,6 +30,7 @@ namespace MyLibrary.Borrowing.Services
                 borrowing.Date_Return = null;
                 borrowing.BookName = BookName;
                 borrowing.StudentName = StudentName;
+                borrowing.State = 1;
                 Bodb.borrowings.Add(borrowing);
                 Bodb.SaveChanges();
                 return true;
@@ -56,10 +59,13 @@ namespace MyLibrary.Borrowing.Services
             else
             {
                 List<Model.Entities.Borrowing> borrowingqueries2 = Bodb.borrowings.Where(s => s.BookName == BookName).ToList();
-                Model.Entities.Borrowing borrowingquery2 = borrowingqueries2.FirstOrDefault();
+                Model.Entities.Borrowing borrowingquery2 = borrowingqueries2.Last();
                 if (borrowingquery2 != null)
                 {
-                    flag = true;
+                    if (borrowingquery2.State == 1)
+                    {
+                        flag = true;
+                    }
                 }
                 else flag = false;
             }
@@ -86,6 +92,7 @@ namespace MyLibrary.Borrowing.Services
 
                 borrowing.Date_Return = DateTime.Now;
                 borrowing.Date = null;
+                borrowing.State = 2;
                 Bodb.borrowings.Add(borrowing);
                 Bodb.SaveChanges();
                 return true;
