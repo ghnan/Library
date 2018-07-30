@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Web;
 using System.Web.Mvc;
 namespace MyLibrary.Student.Mvc.Controllers
 {
@@ -24,20 +25,17 @@ namespace MyLibrary.Student.Mvc.Controllers
         [HttpPost]
         public ActionResult DoLogin(Model.Entities.Student student)
         {
-            System.Web.HttpContext.Current.Session["Name"] = student.StudentUserName;
-            string Name = Session["Name"].ToString();
-            System.Web.HttpContext.Current.Session["User"] = student;
-
+            string name = student.StudentUserName;
             string pwd = student.StudentPwd;
             string flag = Request.Form["optionsRadiosinline"];
             int judge = Services.StudentService.DoLogin(flag,student);
             switch (judge)
             {
-                case 0:return RedirectToAction("DoLogin", "DoAdmin",new {Area = "Admin", Name,pwd});
+                case 0:return RedirectToAction("DoLogin", "DoAdmin",new {Area = "Admin",name,pwd});
 
                 case 1:return Content("用户名为空");
     
-                case 2:return RedirectToAction("StudentMain");
+                case 2:return Redirect("StudentMain");
                     
                 case 3:return Content("密码错误");
                    

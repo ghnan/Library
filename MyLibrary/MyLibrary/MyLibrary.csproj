@@ -167,7 +167,6 @@
     <Content Include="Areas\Borrowing\Views\DoBorrowing\Borrowing.cshtml" />
     <Content Include="Areas\Student\Views\Web.config" />
     <Content Include="Areas\Borrowing\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Borrowing\Views\DoBorrowing\Test.cshtml" />
     <Content Include="Areas\Borrowing\Views\DoBorrowing\Return.cshtml" />
     <Content Include="Areas\Borrowing\Views\DoBorrowing\ShowBorrowingInfo.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
@@ -175,7 +174,6 @@
     <Content Include="Areas\Admin\Views\DoAdmin\AdminMain.cshtml" />
     <Content Include="Areas\Admin\Views\DoAdmin\BorrowingInfo.cshtml" />
     <Content Include="Areas\Book\Views\DoBook\DeleteBook.cshtml" />
-    <Content Include="Areas\Book\Views\DoBook\ChangeBook.cshtml" />
     <Content Include="Areas\Book\Views\DoBook\BookInfo.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

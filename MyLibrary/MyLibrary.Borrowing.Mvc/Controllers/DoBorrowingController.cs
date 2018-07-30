@@ -22,7 +22,7 @@ namespace MyLibrary.Borrowing.Mvc.Controllers
         [HttpPost]
         public ActionResult DoBorrowingByName()
         {
-            string Name = System.Web.HttpContext.Current.Session["Name"].ToString();
+            string Name = Request.Form["StudentName"];
             string BookName = Request.Form["BookName"];
             //string StudentName = Request.Form["StudentName"];
             bool flag = Services.BorrowingService.DoBorrowingByName(BookName, Name);
