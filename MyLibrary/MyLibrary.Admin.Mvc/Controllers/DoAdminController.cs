@@ -34,5 +34,22 @@ namespace MyLibrary.Admin.Mvc.Controllers
             Services.AdminService.Register(admin);
             return View();
         }
+
+        public ActionResult DoLogin(string Name,string pwd)
+        {
+            int judge = Services.AdminService.DoLogin(Name,pwd);
+            switch (judge)
+            {
+                case 1: return Content("用户名为空");
+
+                case 2: return RedirectToAction("AdminMain");
+
+                case 3: return Content("密码错误");
+
+                case 4: return Content("用户不存在");
+
+                default: return Content("系统错误");
+            }
+        }
     }
 }

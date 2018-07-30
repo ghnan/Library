@@ -8,14 +8,9 @@ namespace MyLibrary.Student.Mvc.Controllers
     public class DoStudentController : Controller
     {
         /// <summary>
-        /// 登录显示界面
+        /// 返回登录页面
         /// </summary>
         /// <returns></returns>
-        public ActionResult Login()
-        {
-            return View();
-        }
-
         public ActionResult ReturnLogin()
         {
             return RedirectToAction("Login","Home",new {Area = "" });
@@ -29,14 +24,19 @@ namespace MyLibrary.Student.Mvc.Controllers
         [HttpPost]
         public ActionResult DoLogin(Model.Entities.Student student)
         {
+            System.Web.HttpContext.Current.Session["Name"] = student.StudentUserName;
+            string Name = Session["Name"].ToString();
+            System.Web.HttpContext.Current.Session["User"] = student;
+
+            string pwd = student.StudentPwd;
             string flag = Request.Form["optionsRadiosinline"];
             int judge = Services.StudentService.DoLogin(flag,student);
             switch (judge)
             {
-                case 0:return RedirectToAction("AdminMain", "DoAdmin",new { Area = "Admin" });
+                case 0:return RedirectToAction("DoLogin", "DoAdmin",new {Area = "Admin", Name,pwd});
 
                 case 1:return Content("用户名为空");
- 
+    
                 case 2:return RedirectToAction("StudentMain");
                     
                 case 3:return Content("密码错误");

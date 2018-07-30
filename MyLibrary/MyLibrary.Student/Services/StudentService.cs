@@ -8,6 +8,7 @@ namespace MyLibrary.Student.Services
     {
         static StudentDbContext Sdb = new StudentDbContext();
         /// <summary>
+        /// 登录判断
         /// 返回值为1：用户名为空
         /// 返回值为2：登录成功
         /// 返回值为3：密码错误

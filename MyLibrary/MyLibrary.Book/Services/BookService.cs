@@ -22,13 +22,17 @@ namespace MyLibrary.Book.Services
             Bdb.SaveChanges();
         }
 
+        /// <summary>
+        /// 返回书籍信息
+        /// </summary>
+        /// <returns></returns>
         public static List<Model.Entities.Book> GetBooks()
         {
             return Bdb.Books.ToList();
         }
 
         /// <summary>
-        /// 查询书籍
+        /// 返回查询书籍结果
         /// </summary>
         /// <param name="author"></param>
         /// <returns></returns>
@@ -129,6 +133,15 @@ namespace MyLibrary.Book.Services
                 Bdb.Books.Remove(bookquery);
                 Bdb.SaveChanges();
             }
+        }
+
+        /// <summary>
+        /// 返回书籍信息
+        /// </summary>
+        /// <returns></returns>
+        public static List<Model.Entities.Book> BookInfo()
+        {
+            return Bdb.Books.ToList();
         }
     }
 }

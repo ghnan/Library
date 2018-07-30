@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Web.SessionState;
 
 namespace MyLibrary.Borrowing.Mvc.Controllers
 {
@@ -21,9 +22,10 @@ namespace MyLibrary.Borrowing.Mvc.Controllers
         [HttpPost]
         public ActionResult DoBorrowingByName()
         {
+            string Name = System.Web.HttpContext.Current.Session["Name"].ToString();
             string BookName = Request.Form["BookName"];
-            string StudentName = Request.Form["StudentName"];
-            bool flag = Services.BorrowingService.DoBorrowingByName(BookName, StudentName);
+            //string StudentName = Request.Form["StudentName"];
+            bool flag = Services.BorrowingService.DoBorrowingByName(BookName, Name);
             if (flag)
             {
                 return RedirectToAction("StudentMain", "DoStudent", new { area = "Student" });

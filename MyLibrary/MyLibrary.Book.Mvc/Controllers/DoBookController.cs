@@ -84,5 +84,15 @@ namespace MyLibrary.Book.Mvc.Controllers
             Services.BookService.DeleteBookByName(BookName);
             return RedirectToAction("Admin", "DoAdmin", new { Area = "Admin" });
         }
+
+        /// <summary>
+        /// 查看书籍信息
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult BookInfo()
+        {
+            List<MyLibrary.Model.Entities.Book> BookList = MyLibrary.Book.Services.BookService.GetBooks();
+            return View(BookList);
+        }
     }
 }
