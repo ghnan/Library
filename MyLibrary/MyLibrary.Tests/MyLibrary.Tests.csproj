@@ -101,6 +101,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MyLibrary.Student.Mvc\MyLibrary.Student.Mvc.csproj">
+      <Project>{07D56B15-7AD9-4681-B136-E0F8E8E49BA8}</Project>
+      <Name>MyLibrary.Student.Mvc</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MyLibrary\MyLibrary.csproj">
       <Project>{59E71152-B78E-4D31-8AEC-C78345822C99}</Project>
       <Name>MyLibrary</Name>

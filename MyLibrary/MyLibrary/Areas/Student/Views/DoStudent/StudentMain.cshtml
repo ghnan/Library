@@ -1,9 +1,17 @@
-﻿@model IEnumerable<MyLibrary.Model.Entities.Book>
+﻿@section scripts{
+    <script type="text/javascript">
+        $(function () {
+
+        })
+    </script>
+}
+@model PagedList.IPagedList<MyLibrary.Model.Entities.Book>
+@using PagedList.Mvc
 @{
     ViewBag.Title = "StudentMain";
 }
 
-<div class="jumbotron text-center" style="margin-bottom:0">
+<div class="jumbotron text-center" style="margin-bottom:50px">
     <h1>这是学生图书馆管理页面</h1>
 </div>
 
@@ -28,6 +36,15 @@
         <a href="/Borrowing/DoBorrowing/Return">归还书籍</a>
     </li>
 </ul>
+
+<form method="post" action="RedictToBook">
+    <div class="input-group col-sm-offset-9" style="margin-top:0">
+        <input type="text" class="form-control" name="name" placeholder="请输入查找书名" />
+        <span class="input-group-btn">
+            <button class="btn btn-info btn-search" style="margin-left:3px" id="search">查找</button>
+        </span>
+    </div>
+</form>
 <table class="table table-bordered" style="margin-top:50px;">
     <tr class="active">
         <th>
@@ -81,5 +98,9 @@
         </tr>
     }
 </table>
+
+
+每页 @Model.PageSize 条记录，共 @Model.PageCount 页，当前第 @Model.PageNumber 页
+@Html.PagedListPager(Model, page => Url.Action("StudentMain", new { page }))
 
 <a href="ReturnLogin">返回登录页面</a>

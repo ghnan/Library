@@ -22,7 +22,7 @@ namespace MyLibrary.Borrowing.Mvc.Controllers
         [HttpPost]
         public ActionResult DoBorrowingByName()
         {
-            string Name = Request.Form["StudentName"];
+            string Name = Request.Cookies["Name"].Value;
             string BookName = Request.Form["BookName"];
             //string StudentName = Request.Form["StudentName"];
             bool flag = Services.BorrowingService.DoBorrowingByName(BookName, Name);
@@ -50,7 +50,7 @@ namespace MyLibrary.Borrowing.Mvc.Controllers
         public ActionResult DoReturnByName()
         {
             string BookName = Request.Form["BookName"];
-            string StudentName = Request.Form["StudentName"];
+            string StudentName = Request.Cookies["Name"].Value;
             bool flag = Services.BorrowingService.DoReturnByName(BookName,StudentName);
             if (flag)
             {

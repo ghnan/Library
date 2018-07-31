@@ -1,6 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.SessionState;
+using PagedList;
+
 namespace MyLibrary.Student.Mvc.Controllers
 {
     /// <summary>
@@ -12,7 +17,7 @@ namespace MyLibrary.Student.Mvc.Controllers
         /// 返回登录页面
         /// </summary>
         /// <returns></returns>
-        public ActionResult ReturnLogin()
+        public ActionResult ReturnLogin() 
         {
             return RedirectToAction("Login","Home",new {Area = "" });
         }
@@ -26,6 +31,10 @@ namespace MyLibrary.Student.Mvc.Controllers
         public ActionResult DoLogin(Model.Entities.Student student)
         {
             string name = student.StudentUserName;
+
+            Response.Cookies["Name"].Value = student.StudentUserName;
+            Response.Cookies["Name"].Expires = DateTime.Now.AddDays(1);
+
             string pwd = student.StudentPwd;
             string flag = Request.Form["optionsRadiosinline"];
             int judge = Services.StudentService.DoLogin(flag,student);
@@ -70,10 +79,20 @@ namespace MyLibrary.Student.Mvc.Controllers
         /// 学生页面显示
         /// </summary>
         /// <returns></returns>
-        public ActionResult StudentMain()
+        public ActionResult StudentMain(int? page)
         {
-            List<Model.Entities.Book> booklist = Book.Services.BookService.GetBooks();
-            return View(booklist);
+            var booklist = Book.Services.BookService.GetBooks();
+            int pageNumber = page ?? 1;
+            int pageSize = 3;
+            booklist = booklist.OrderBy(s => s.BookID).ToList();
+            IPagedList<Model.Entities.Book> books = booklist.ToPagedList(pageNumber, pageSize);
+            return View(books);
+        }
+
+        public ActionResult RedictToBook()
+        {
+            string name = Request.Form["name"];
+            return RedirectToAction("SelectBookByName", "DoBook", new {Area = "Book",name});
         }
     }
 }
