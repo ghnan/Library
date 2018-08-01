@@ -35,6 +35,12 @@ namespace MyLibrary.Admin.Mvc.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 管理员登录控制
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <param name="pwd"></param>
+        /// <returns></returns>
         public ActionResult DoLogin(string Name,string pwd)
         {
             int judge = Services.AdminService.DoLogin(Name,pwd);

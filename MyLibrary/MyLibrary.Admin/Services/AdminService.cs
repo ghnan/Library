@@ -12,6 +12,29 @@ namespace MyLibrary.Admin.Services
         static AdminDbContext Adb = new AdminDbContext();
 
         /// <summary>
+        /// 登录类型枚举
+        /// </summary>
+        public enum LoginType
+        {
+            /// <summary>
+            /// 用户名为空
+            /// </summary>
+            UserNameIsNull = 1,
+            /// <summary>
+            /// 登录成功
+            /// </summary>
+            LoginSuccess = 2,
+            /// <summary>
+            /// 密码错误
+            /// </summary>
+            UserPwdIsFalse = 3,
+            /// <summary>
+            /// 用户名错误
+            /// </summary>
+            UserNameIsFalse = 4
+        }
+
+        /// <summary>
         /// 获得管理员信息
         /// </summary>
         /// <returns></returns>
@@ -38,9 +61,9 @@ namespace MyLibrary.Admin.Services
         /// <returns></returns>
         public static int DoLogin(string Name,string pwd)
         {
-                if (Name == "")
+                if (Name == null)
                 {
-                    return 1;
+                    return (int)LoginType.UserNameIsNull;
                 }
                 else
                 {
@@ -48,11 +71,11 @@ namespace MyLibrary.Admin.Services
                     {
                         if (Adb.Admins.Single(s => s.AdminUserName == Name).AdminPwd == pwd)
                         {
-                            return 2;
+                            return (int)LoginType.LoginSuccess;
                         }
-                        else return 3;
+                        else return (int)LoginType.UserNameIsFalse;
                     }
-                    else return 4;
+                    else return (int)LoginType.UserPwdIsFalse;
                 }
         }
     }

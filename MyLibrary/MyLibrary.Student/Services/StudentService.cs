@@ -7,6 +7,34 @@ namespace MyLibrary.Student.Services
     public static class StudentService
     {
         static StudentDbContext Sdb = new StudentDbContext();
+
+        /// <summary>
+        /// 登录类型枚举
+        /// </summary>
+        public enum LoginType
+        {
+            /// <summary>
+            /// 切换到管理员登录
+            /// </summary>
+            AdminLogin = 0,
+            /// <summary>
+            /// 用户名为空
+            /// </summary>
+            UserNameIsNull = 1,
+            /// <summary>
+            /// 登录成功
+            /// </summary>
+            LoginSuccess = 2,
+            /// <summary>
+            /// 密码错误
+            /// </summary>
+            UserPwdIsFalse = 3,
+            /// <summary>
+            /// 用户名错误
+            /// </summary>
+            UserNameIsFalse = 4
+        }
+
         /// <summary>
         /// 登录判断
         /// 返回值为1：用户名为空
@@ -23,9 +51,9 @@ namespace MyLibrary.Student.Services
             
             if (flag == "option1")
             {
-                if (student.StudentUserName == "")
+                if (student.StudentUserName == null)
                 {
-                    return 1;
+                    return (int)LoginType.UserNameIsNull;
                 }
                 else
                 {
@@ -33,14 +61,14 @@ namespace MyLibrary.Student.Services
                     {
                         if (Sdb.Students.Single(s => s.StudentUserName == student.StudentUserName).StudentPwd == student.StudentPwd)
                         {
-                            return 2;
+                            return (int)LoginType.LoginSuccess;
                         }
-                        else return 3;
+                        else return (int)LoginType.UserPwdIsFalse;
                     }
-                    else return 4;
+                    else return (int)LoginType.UserNameIsFalse;
                 }
             }
-            else return 0;
+            else return (int)LoginType.AdminLogin;
         }
 
         /// <summary>

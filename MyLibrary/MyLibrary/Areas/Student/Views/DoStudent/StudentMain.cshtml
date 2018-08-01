@@ -25,10 +25,10 @@
         </a>
         <ul class="dropdown-menu">
             <li>
-                <a href="/Borrowing/DoBorrowing/Borrowing">通过书籍名称借阅</a>
+                <a href="/Borrowing/DoBorrowing/BorrowingByName">通过书籍名称借阅</a>
             </li>
             <li>
-                <a>通过书籍编号借阅</a>
+                <a href="/Borrowing/DoBorrowing/BorrowingByID">通过书籍编号借阅</a>
             </li>
         </ul>
     </li>
@@ -87,7 +87,7 @@
                 @{
                     if (item.Quantity > 0)
                     {
-                        <a href="/Borrowing/DoBorrowing/Borrowing">可以借阅</a>
+                        <a href="/Borrowing/DoBorrowing/BorrowingByName">可以借阅</a>
                     }
                     else
                     {

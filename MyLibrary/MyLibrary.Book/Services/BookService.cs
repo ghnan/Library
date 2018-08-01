@@ -43,12 +43,21 @@ namespace MyLibrary.Book.Services
         }
 
         /// <summary>
-        /// 借阅书籍以后减少数量
+        /// 通过书籍名称借阅书籍以后减少数量
         /// </summary>
         /// <param name="book"></param>
-        public static void BorrowingUpdateBookQuantity(Model.Entities.Book book)
+        public static void BorrowingByNameUpdateBookQuantity(Model.Entities.Book book)
         {
             List<Model.Entities.Book> bookqueries = Bdb.Books.Where(s => s.Name == book.Name).ToList();
+            Model.Entities.Book bookquery = bookqueries.FirstOrDefault();
+
+            bookquery.Quantity = bookquery.Quantity - 1;
+            Bdb.SaveChanges();
+        }
+
+        public static void BorrowingByIDUpdateBookQuantity(Model.Entities.Book book)
+        {
+            List<Model.Entities.Book> bookqueries = Bdb.Books.Where(s => s.BookID == book.BookID).ToList();
             Model.Entities.Book bookquery = bookqueries.FirstOrDefault();
 
             bookquery.Quantity = bookquery.Quantity - 1;
@@ -90,14 +99,42 @@ namespace MyLibrary.Book.Services
         }
 
         /// <summary>
-        /// 借阅书籍时，判断书籍书否存在 
+        /// 通过书籍名称借阅书籍时，判断书籍是否存在 
         /// </summary>
         /// <param name="BookName"></param>
         /// <returns></returns>
-        public static bool JudgeBook(string BookName)
+        public static bool JudgeBookByName(string bookname)
         {
             bool flag = false;
-            List<Model.Entities.Book> bookqueries = Bdb.Books.Where(s => s.Name == BookName).ToList();
+            List<Model.Entities.Book> bookqueries = Bdb.Books.Where(s => s.Name == bookname).ToList();
+            Model.Entities.Book bookquery = bookqueries.FirstOrDefault();
+            if (bookqueries.Count == 0)
+            {
+                flag = false;
+            }
+            else
+            {
+                if (bookquery.Quantity > 0)
+                {
+                    flag = true;
+                }
+                else
+                {
+                    flag = false;
+                }
+            }
+            return flag;
+        }
+
+        /// <summary>
+        /// 通过书籍ID借阅书籍时，判断书籍是否存在
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static bool JudgeBookByID(int id)
+        {
+            bool flag = false;
+            List<Model.Entities.Book> bookqueries = Bdb.Books.Where(s => s.BookID == id).ToList();
             Model.Entities.Book bookquery = bookqueries.FirstOrDefault();
             if (bookqueries.Count == 0)
             {

@@ -18,18 +18,50 @@ namespace MyLibrary.Borrowing.Services
         {
             Model.Entities.Book book = new Model.Entities.Book();
             book.Name = BookName;
-            bool flag = Book.Services.BookService.JudgeBook(BookName);
+            bool flag = Book.Services.BookService.JudgeBookByName(BookName);
             List<Model.Entities.Borrowing> borrowingqueries = Bodb.borrowings.Where(s => s.StudentName == StudentName).ToList();
             Model.Entities.Borrowing borrowingquery = borrowingqueries.FirstOrDefault();
             if (flag)
             {
-                Book.Services.BookService.BorrowingUpdateBookQuantity(book);
+                Book.Services.BookService.BorrowingByNameUpdateBookQuantity(book);
 
                 Model.Entities.Borrowing borrowing = new Model.Entities.Borrowing();
                 borrowing.Date = DateTime.Now;
                 borrowing.Date_Return = null;
                 borrowing.BookName = BookName;
                 borrowing.StudentName = StudentName;
+                borrowing.State = 1;
+                Bodb.borrowings.Add(borrowing);
+                Bodb.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 通过书籍ID借阅书籍
+        /// </summary>
+        /// <param name="BookID"></param>
+        /// <param name="StudentName"></param>
+        /// <returns></returns>
+        public static bool DoBorrowingByID(int id, string studentname)
+        {
+            Model.Entities.Book book = new Model.Entities.Book();
+            book.BookID = id;
+            bool flag = Book.Services.BookService.JudgeBookByID(id);
+            List<Model.Entities.Borrowing> borrowingqueries = Bodb.borrowings.Where(s => s.BorrowingID == id).ToList();
+            Model.Entities.Borrowing borrowingquery = borrowingqueries.FirstOrDefault();
+            if (flag)
+            {
+                Book.Services.BookService.BorrowingByIDUpdateBookQuantity(book);
+                Model.Entities.Borrowing borrowing = new Model.Entities.Borrowing();
+                borrowing.Date = DateTime.Now;
+                borrowing.Date_Return = null;
+                borrowing.BookName = borrowingquery.BookName;
+                borrowing.StudentName = studentname;
                 borrowing.State = 1;
                 Bodb.borrowings.Add(borrowing);
                 Bodb.SaveChanges();

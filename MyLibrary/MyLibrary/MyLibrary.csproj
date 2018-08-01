@@ -172,7 +172,8 @@
     <Content Include="Areas\Book\Views\Web.config" />
     <Content Include="Areas\Book\Views\DoBook\SelectBook.cshtml" />
     <Content Include="Areas\Book\Views\DoBook\SelectBookByName.cshtml" />
-    <Content Include="Areas\Borrowing\Views\DoBorrowing\Borrowing.cshtml" />
+    <Content Include="Areas\Borrowing\Views\DoBorrowing\BorrowingByID.cshtml" />
+    <None Include="Areas\Borrowing\Views\DoBorrowing\BorrowingByName.cshtml" />
     <Content Include="Areas\Student\Views\Web.config" />
     <Content Include="Areas\Borrowing\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Borrowing\Views\DoBorrowing\Return.cshtml" />

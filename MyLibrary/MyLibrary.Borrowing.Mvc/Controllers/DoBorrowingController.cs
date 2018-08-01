@@ -7,10 +7,10 @@ namespace MyLibrary.Borrowing.Mvc.Controllers
     public class DoBorrowingController : Controller
     {
         /// <summary>
-        /// 借书页面
+        /// 通过书名借书页面
         /// </summary>
         /// <returns></returns>
-        public ActionResult Borrowing()
+        public ActionResult BorrowingByName()
         {
             return View();
         }
@@ -22,15 +22,40 @@ namespace MyLibrary.Borrowing.Mvc.Controllers
         [HttpPost]
         public ActionResult DoBorrowingByName()
         {
-            string Name = Request.Cookies["Name"].Value;
-            string BookName = Request.Form["BookName"];
-            //string StudentName = Request.Form["StudentName"];
-            bool flag = Services.BorrowingService.DoBorrowingByName(BookName, Name);
+            string name = Request.Cookies["Name"].Value;
+            string bookname = Request.Form["BookName"];
+            bool flag = Services.BorrowingService.DoBorrowingByName(bookname, name);
             if (flag)
             {
                 return RedirectToAction("StudentMain", "DoStudent", new { area = "Student" });
             }
-            else return Content("借阅失败，可能是书籍未归还或者书籍名称输入错误");
+            else return Content("借阅失败，可能是书籍未归还或者书籍信息输入错误或者是存储量不够");
+        }
+
+        /// <summary>
+        /// 通过书籍ID借书页面
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult BorrowingByID()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 通过书籍ID借阅书籍
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult DoBorrowingByID()
+        {
+            int id = int.Parse(Request.Form["BookID"]);
+            string name = Request.Cookies["Name"].Value;
+            bool flag = Services.BorrowingService.DoBorrowingByID(id, name);
+            if (flag)
+            {
+                return RedirectToAction("StudentMain", "DoStudent", new { area = "Student" });
+            }
+            else return Content("借阅失败，可能是书籍未归还或者书籍信息输入错误或者是存储量不够");
         }
 
         /// <summary>
