@@ -1,6 +1,8 @@
 ﻿using MyLibrary.Student.DbContext;
 using System.Collections.Generic;
 using System.Linq;
+using MyLibrary.Student.Extensions;
+using MyLibrary.Student.Enums;
 
 namespace MyLibrary.Student.Services
 {
@@ -8,32 +10,7 @@ namespace MyLibrary.Student.Services
     {
         static StudentDbContext Sdb = new StudentDbContext();
 
-        /// <summary>
-        /// 登录类型枚举
-        /// </summary>
-        public enum LoginType
-        {
-            /// <summary>
-            /// 切换到管理员登录
-            /// </summary>
-            AdminLogin = 0,
-            /// <summary>
-            /// 用户名为空
-            /// </summary>
-            UserNameIsNull = 1,
-            /// <summary>
-            /// 登录成功
-            /// </summary>
-            LoginSuccess = 2,
-            /// <summary>
-            /// 密码错误
-            /// </summary>
-            UserPwdIsFalse = 3,
-            /// <summary>
-            /// 用户名错误
-            /// </summary>
-            UserNameIsFalse = 4
-        }
+      
 
         /// <summary>
         /// 登录判断
@@ -53,7 +30,7 @@ namespace MyLibrary.Student.Services
             {
                 if (student.StudentUserName == null)
                 {
-                    return (int)LoginType.UserNameIsNull;
+                    return LoginType.UserNameIsNull.GetValue();
                 }
                 else
                 {
