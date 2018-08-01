@@ -74,9 +74,9 @@ namespace MyLibrary.Borrowing.Mvc.Controllers
         [HttpPost]
         public ActionResult DoReturnByName()
         {
-            string BookName = Request.Form["BookName"];
-            string StudentName = Request.Cookies["Name"].Value;
-            bool flag = Services.BorrowingService.DoReturnByName(BookName,StudentName);
+            string bookName = Request.Form["BookName"];
+            string studentName = Request.Cookies["Name"].Value;
+            bool flag = Services.BorrowingService.DoReturnByName(bookName,studentName);
             if (flag)
             {
                 return RedirectToAction("StudentMain", "DoStudent", new { area = "Student" });

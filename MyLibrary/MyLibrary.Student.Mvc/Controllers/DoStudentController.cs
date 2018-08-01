@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.SessionState;
+using MyLibrary.Model.PagingHelpers;
 using PagedList;
 
 namespace MyLibrary.Student.Mvc.Controllers
@@ -79,17 +80,21 @@ namespace MyLibrary.Student.Mvc.Controllers
         /// 学生页面显示
         /// </summary>
         /// <returns></returns>
-        public ActionResult StudentMain(int? page)
+        public ActionResult StudentMain(int pageIndex = 1,int pageNow =1)
         {
-            var booklist = Book.Services.BookService.GetBooks();
-            int pageNumber = page ?? 1;
-            int pageSize = 3;
-            booklist = booklist.OrderBy(s => s.BookID).ToList();
-            IPagedList<Model.Entities.Book> books = booklist.ToPagedList(pageNumber, pageSize);
-            return View(books);
-        }
+            IEnumerable<Model.Entities.Book> books = MyLibrary.Book.Services.BookService.GetBooks(); //得到数据
 
+            PagingHelpers<Model.Entities.Book> bookPaging = new PagingHelpers<Model.Entities.Book>(1,books);//初始化分页器
+
+            bookPaging.PageNow = pageNow;//返回当前页数
+
+            bookPaging.PageIndex = pageIndex;//指定返回页
+
+            return View(bookPaging);
+
+        }
         /// <summary>
+
         /// 跳转到查询数据功能
         /// </summary>
         /// <returns></returns>
@@ -97,6 +102,24 @@ namespace MyLibrary.Student.Mvc.Controllers
         {
             string name = Request.Form["name"];
             return RedirectToAction("SelectBookByName", "DoBook", new {Area = "Book",name});
+        }
+
+        /// <summary>
+        /// 跳转页面
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Jump()
+        {
+            int page = int.Parse(Request.Form["page"]);
+            IEnumerable<Model.Entities.Book> books = MyLibrary.Book.Services.BookService.GetBooks(); //得到数据
+
+            PagingHelpers<Model.Entities.Book> bookPaging = new PagingHelpers<Model.Entities.Book>(1, books);//初始化分页器
+
+            bookPaging.PageNow = page;//返回当前页数
+
+            bookPaging.PageIndex = page;//指定返回页
+
+            return View(bookPaging);
         }
     }
 }

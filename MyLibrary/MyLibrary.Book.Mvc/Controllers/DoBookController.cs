@@ -80,8 +80,8 @@ namespace MyLibrary.Book.Mvc.Controllers
         /// <returns></returns>
         public ActionResult DeleteBookByName()
         {
-            string BookName = Request.Form["BookName"];
-            Services.BookService.DeleteBookByName(BookName);
+            string bookName = Request.Form["BookName"];
+            Services.BookService.DeleteBookByName(bookName);
             return RedirectToAction("Admin", "DoAdmin", new { Area = "Admin" });
         }
 

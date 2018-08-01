@@ -14,18 +14,12 @@ namespace MyLibrary.Student.Services
 
         /// <summary>
         /// 登录判断
-        /// 返回值为1：用户名为空
-        /// 返回值为2：登录成功
-        /// 返回值为3：密码错误
-        /// 返回值为4：用户不存在
         /// </summary>
         /// <param name="flag"></param>
         /// <param name="student"></param>
         /// <returns></returns>
         public static int DoLogin(string flag,Model.Entities.Student student)
         {
-            string Name = student.Name;
-            
             if (flag == "option1")
             {
                 if (student.StudentUserName == null)
