@@ -89,6 +89,10 @@ namespace MyLibrary.Student.Mvc.Controllers
             return View(books);
         }
 
+        /// <summary>
+        /// 跳转到查询数据功能
+        /// </summary>
+        /// <returns></returns>
         public ActionResult RedictToBook()
         {
             string name = Request.Form["name"];
