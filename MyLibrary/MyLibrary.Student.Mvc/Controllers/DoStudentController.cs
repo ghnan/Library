@@ -86,8 +86,6 @@ namespace MyLibrary.Student.Mvc.Controllers
 
             PagingHelpers<Model.Entities.Book> bookPaging = new PagingHelpers<Model.Entities.Book>(1,books);//初始化分页器
 
-            bookPaging.PageNow = pageNow;//返回当前页数
-
             bookPaging.PageIndex = pageIndex;//指定返回页
 
             return View(bookPaging);
@@ -114,8 +112,6 @@ namespace MyLibrary.Student.Mvc.Controllers
             IEnumerable<Model.Entities.Book> books = MyLibrary.Book.Services.BookService.GetBooks(); //得到数据
 
             PagingHelpers<Model.Entities.Book> bookPaging = new PagingHelpers<Model.Entities.Book>(1, books);//初始化分页器
-
-            bookPaging.PageNow = page;//返回当前页数
 
             bookPaging.PageIndex = page;//指定返回页
 

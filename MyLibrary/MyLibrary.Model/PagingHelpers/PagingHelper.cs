@@ -17,7 +17,7 @@ namespace MyLibrary.Model.PagingHelpers
         public int PageSize { get;private set; }
 
         /// <summary>
-        /// 起始页码
+        /// 当前页码
         /// </summary>
         public int PageIndex { get; set; }
 
@@ -26,10 +26,6 @@ namespace MyLibrary.Model.PagingHelpers
         /// </summary>
         public int PageCount { get;private set; }
 
-        /// <summary>
-        /// 当前页面
-        /// </summary>
-        public int PageNow { get; set; }
         /// <summary>
         /// 判断是否有前一页
         /// </summary>
